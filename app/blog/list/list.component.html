@@ -1,0 +1,16 @@
+
+<button  class="read-more-button" routerLink="/add">add blog</button>
+<div class="blog-list">
+    <div class="blog-post" *ngFor="let blog of blogs" [ngClass]="{'green-border': blog.upvotes > blog.downvotes, 'red-border': blog.upvotes < blog.downvotes}">
+      <h2 class="blog-title">{{blog.title}}</h2>
+      <p class="blog-excerpt">{{blog.author}}</p>
+      <div class="blog-buttons">
+        <button class="upvote-button" (click)="upvote(blog._id)">Upvote ( {{ blog.upvotes }})</button>
+        <button class="downvote-button" (click)="downvote(blog._id)">Downvote ( {{blog.downvotes }} )</button>
+        <a routerLink="readmore/{{blog._id}}" class="read-more-button">Read More</a>
+        <a routerLink="update/{{blog._id}}" class="read-more-button">update</a>
+        <button  class="read-more-button" (click)="delete(blog._id)">delete</button>
+      </div>
+    </div>
+  </div>
+  
